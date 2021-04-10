@@ -22,7 +22,7 @@ const firestoreModules = [
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
