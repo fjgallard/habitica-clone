@@ -1,17 +1,34 @@
+
+// Import material theming functions
+@import '~@angular/material/theming';
+
+// Copy the palettes from your selected theme (usually theme.scss).
+$app-primary: mat-palette($mat-indigo);
+
+// Create your Sass color vars (will be available in all the project)
+$primary: mat-color($app-primary);
+$background-color: mat-color($app-primary, 0.9);
+$card-color: mat-color($app-primary, 0.8);
+
 .container {
   height: 100%;
   width: 100%;
-  background: black;
-  opacity: 90%;
+  padding-top: 1rem;
+  background-color: $background-color;
+  color: white;
 }
 
 .login-form-card {
-  width: 20%;
-  height: 40%;
+  width: 30%;
+  height: 60%;
+  background-color: $card-color;
+  color: white;
+
 }
 
 .login-form-card__header {
-  font-size: 2rem;
+  margin-top: 2rem;
+  font-size: 1.5rem;
   text-align: center;
 }
 
