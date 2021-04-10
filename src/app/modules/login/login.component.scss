@@ -1,0 +1,30 @@
+.container {
+  height: 100%;
+  width: 100%;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  display: flex;
+  flex-flow: column;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.social-btn--google {
+
+  img {
+    height: 1rem;
+    width: 1rem;
+    margin-right: 0.5rem;
+  }
+}
