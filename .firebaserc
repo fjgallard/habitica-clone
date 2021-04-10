@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "todo-list-project-123": {
+      "hosting": {
+        "habitica-copy": [
+          "todo-list-project-123"
+        ]
+      }
+    }
+  }
+}
