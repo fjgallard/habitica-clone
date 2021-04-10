@@ -1,6 +1,8 @@
 .container {
   height: 100%;
   width: 100%;
+  background: black;
+  opacity: 90%;
 }
 
 .login-form-card {
@@ -8,8 +10,9 @@
   height: 40%;
 }
 
-.login-form-card__container {
-  height: 100%;
+.login-form-card__header {
+  font-size: 2rem;
+  text-align: center;
 }
 
 .social-btns {
@@ -19,6 +22,7 @@
 
 .social-btn {
   width: 75%;
+  margin-top: 0.5rem;
 }
 
 .social-btn--google {
