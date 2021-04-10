@@ -3,21 +3,22 @@
   width: 100%;
 }
 
-.flex {
-  display: flex;
+.login-form-card {
+  width: 20%;
+  height: 40%;
 }
 
-.flex-col {
-  display: flex;
-  flex-flow: column;
+.login-form-card__container {
+  height: 100%;
 }
 
-.align-center {
-  align-items: center;
+.social-btns {
+  min-height: 50%;
+  width: 100%;
 }
 
-.justify-center {
-  justify-content: center;
+.social-btn {
+  width: 75%;
 }
 
 .social-btn--google {
