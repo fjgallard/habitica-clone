@@ -5,7 +5,8 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+
 import { MaterialModule } from 'src/app/material/material.module';
 
 
@@ -16,6 +17,7 @@ import { MaterialModule } from 'src/app/material/material.module';
     DashboardRoutingModule,
 
     MatToolbarModule,
+    MatMenuModule,
 
     MaterialModule
   ]
