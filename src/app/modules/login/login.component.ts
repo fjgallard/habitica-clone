@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '@shared/services/auth.service';
 
 @Component({
@@ -8,14 +9,15 @@ import { AuthService } from '@shared/services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService) {
+  constructor(private router: Router, private authService: AuthService) {
   }
 
   ngOnInit(): void {
   }
 
-  googleLogin(): void {
-    this.authService.googleLogin();
+  async googleLogin(): Promise<void> {
+    await this.authService.googleLogin();
+    this.router.navigateByUrl('/');
   }
 
 }

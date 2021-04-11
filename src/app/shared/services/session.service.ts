@@ -9,7 +9,7 @@ export class SessionService {
 
   user$: Observable<User>;
 
-  private $user: BehaviorSubject<User> = new BehaviorSubject(null);
+  private $user: BehaviorSubject<User> = new BehaviorSubject(undefined);
 
   constructor() {
     this.user$ = this.$user.asObservable();
@@ -17,5 +17,9 @@ export class SessionService {
 
   setCurrentUser(user: User): void {
     return this.$user.next(user);
+  }
+
+  removeCurrentUser(): void  {
+    return this.$user.next(undefined);
   }
 }

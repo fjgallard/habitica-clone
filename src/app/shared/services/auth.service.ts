@@ -23,6 +23,7 @@ export class AuthService {
   }
 
   async logout(): Promise<void> {
+    this.sessionService.removeCurrentUser();
     return this.fireauth.signOut();
   }
 }
