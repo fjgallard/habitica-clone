@@ -1,1 +1,49 @@
-<app-navbar (logout)="logout()"></app-navbar>
+<div class="container">
+  <app-navbar (logout)="logout()"></app-navbar>
+
+  <div class="flex full-width">
+    <div class="list-container">
+      <h3>Todo</h3>
+
+      <div class="list">
+        <mat-card class="list-item">
+          <div class="flex full-height">
+            <div class="list-item__checkbox-area">
+              <div class="list-item__checkbox"></div>
+            </div>
+            <div class="list-item__desc list-item__desc--task">
+              <div class="list-item__text">Item 1</div>
+            </div>
+          </div>
+        </mat-card>
+
+        <mat-card class="list-item">
+          <div class="flex full-height">
+            <div class="list-item__checkbox-area">
+              <div class="list-item__checkbox"></div>
+            </div>
+            <div class="list-item__desc list-item__desc--task">
+              <div class="list-item__text">Item 2</div>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+
+    <div class="list-container">
+      <h3>Rewards</h3>
+      <mat-card class="list-item">
+        <div class="flex full-height">
+          <div class="list-item__desc list-item__desc--reward">
+            <div class="list-item__text">Item 2</div>
+          </div>
+          <div class="list-item__cost">
+            <mat-icon>monetization_on</mat-icon>
+            <div class="list-item__coin-text">5</div>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>
+

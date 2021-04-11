@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 import { MaterialModule } from 'src/app/material/material.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -19,6 +20,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 
     MatToolbarModule,
     MatMenuModule,
+    MatGridListModule,
 
     MaterialModule
   ]
