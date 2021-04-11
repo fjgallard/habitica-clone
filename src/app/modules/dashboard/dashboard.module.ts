@@ -8,10 +8,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 
 import { MaterialModule } from 'src/app/material/material.module';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 
 @NgModule({
-  declarations: [DashboardComponent],
+  declarations: [DashboardComponent, NavbarComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
