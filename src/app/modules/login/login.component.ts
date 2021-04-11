@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '@shared/services/auth.service';
 
@@ -7,12 +7,13 @@ import { AuthService } from '@shared/services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
-  constructor(private router: Router, private authService: AuthService) {
-  }
 
-  ngOnInit(): void {
+  constructor(
+    private router: Router,
+    private authService: AuthService
+  ) {
   }
 
   async googleLogin(): Promise<void> {

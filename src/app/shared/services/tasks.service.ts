@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Task } from '@shared/models/task.model';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, from, Observable } from 'rxjs';
 import { SessionService } from './session.service';
 
-import { tap } from 'rxjs/operators';
+import { switchMap, tap } from 'rxjs/operators';
+import { User } from '@shared/models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,16 +15,16 @@ export class TasksService {
   tasks$: Observable<Task[]>;
 
   constructor(private firestore: AngularFirestore, private sessionService: SessionService) {
-    this.sessionService.user$.pipe(
-      tap(user => {
-        if (user) {
-          this.getTasks(user.id);
-        }
-      })
+    this.tasks$ = this.sessionService.user$.pipe(
+      switchMap(user => this.getTasks(user))
     );
   }
 
-  private getTasks(user: string): void {
-    this.tasks$ = this.firestore.collection<Task>('tasks', ref => ref.where('user', '==', user)).valueChanges({ idField: 'id' });
+  private getTasks(user: User): Observable<Task[]> {
+    if (!user) {
+      return from([]);
+    }
+
+    return this.firestore.collection<Task>('tasks', ref => ref.where('user', '==', user.id)).valueChanges({ idField: 'id' });
   }
 }

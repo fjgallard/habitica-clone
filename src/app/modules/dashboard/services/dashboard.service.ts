@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { TasksService } from '@shared/services/tasks.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Injectable({
@@ -6,5 +7,5 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 })
 export class DashboardService {
 
-  constructor(private authService: AuthService) { }
+  constructor(private tasksService: TasksService) { }
 }

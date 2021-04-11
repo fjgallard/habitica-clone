@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AuthHelper } from '@shared/helper/auth.helper';
+import { ReplaySubject, Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { User } from '../models/user.model';
 
 @Injectable({
@@ -9,17 +12,24 @@ export class SessionService {
 
   user$: Observable<User>;
 
-  private $user: BehaviorSubject<User> = new BehaviorSubject(undefined);
+  private $user: Subject<User> = new ReplaySubject();
 
-  constructor() {
+  constructor(private fireauth: AngularFireAuth) {
     this.user$ = this.$user.asObservable();
+
+    this.fireauth.onAuthStateChanged(user => {
+      if (user) {
+        return this.setCurrentUser(AuthHelper.convertFsUser(user));
+      }
+      this.removeCurrentUser();
+    });
   }
 
-  setCurrentUser(user: User): void {
+  private setCurrentUser(user: User): void {
     return this.$user.next(user);
   }
 
-  removeCurrentUser(): void  {
-    return this.$user.next(undefined);
+  private removeCurrentUser(): void  {
+    return this.$user.next(null);
   }
 }

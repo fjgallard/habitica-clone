@@ -6,24 +6,13 @@
       <h3>Todo</h3>
 
       <div class="list">
-        <mat-card class="list-item">
+        <mat-card class="list-item" *ngFor="let task of tasks$ | async">
           <div class="flex full-height">
             <div class="list-item__checkbox-area">
               <div class="list-item__checkbox"></div>
             </div>
             <div class="list-item__desc list-item__desc--task">
-              <div class="list-item__text">Item 1</div>
-            </div>
-          </div>
-        </mat-card>
-
-        <mat-card class="list-item">
-          <div class="flex full-height">
-            <div class="list-item__checkbox-area">
-              <div class="list-item__checkbox"></div>
-            </div>
-            <div class="list-item__desc list-item__desc--task">
-              <div class="list-item__text">Item 2</div>
+              <div class="list-item__text">{{ task.title }}</div>
             </div>
           </div>
         </mat-card>
