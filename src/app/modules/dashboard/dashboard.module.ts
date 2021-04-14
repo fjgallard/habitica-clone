@@ -10,6 +10,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 
 import { MaterialModule } from 'src/app/material/material.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { ComponentsModule } from '@shared/components/components.module';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
   imports: [
     CommonModule,
     DashboardRoutingModule,
+    ComponentsModule,
 
     MatToolbarModule,
     MatMenuModule,

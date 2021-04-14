@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { ObjectModalComponent } from '@shared/components/object-modal/object-modal.component';
 import { Task } from '@shared/models/task.model';
 import { AuthService } from '@shared/services/auth.service';
-import { SessionService } from '@shared/services/session.service';
 import { TasksService } from '@shared/services/tasks.service';
 import { Observable } from 'rxjs';
 
@@ -17,13 +18,25 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private router: Router,
+
     private authService: AuthService,
     private tasksService: TasksService,
+
+    public dialog: MatDialog
   ) {
     this.tasks$ = this.tasksService.tasks$;
   }
 
   ngOnInit(): void {
+  }
+
+  openDialog(task: Task) {
+    console.log(task);
+    const dialogRef = this.dialog.open(ObjectModalComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
   async logout(): Promise<void> {

@@ -10,7 +10,7 @@
       </div>
 
       <div class="list">
-        <mat-card class="list-item" *ngFor="let task of tasks$ | async">
+        <mat-card class="list-item" *ngFor="let task of tasks$ | async" (click)="openDialog(task)">
           <div class="flex full-height">
             <div class="list-item__checkbox-area">
               <div class="list-item__checkbox"></div>
