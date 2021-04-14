@@ -31,8 +31,12 @@ export class DashboardComponent implements OnInit {
   }
 
   openDialog(task: Task): void {
-    console.log(task);
-    const dialogRef = this.dialog.open(ObjectModalComponent);
+    const dialogRef = this.dialog.open(ObjectModalComponent, {
+      data: {
+        object: task,
+        type: 'task'
+      }
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
