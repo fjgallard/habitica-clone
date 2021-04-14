@@ -5,6 +5,10 @@
     <div class="list-container">
       <h3>Todo</h3>
 
+      <div class="new-item-input">
+        <input type="text" placeholder="New Task" (keypress)="createTask($event)">
+      </div>
+
       <div class="list">
         <mat-card class="list-item" *ngFor="let task of tasks$ | async">
           <div class="flex full-height">

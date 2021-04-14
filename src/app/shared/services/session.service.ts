@@ -12,7 +12,7 @@ export class SessionService {
 
   user$: Observable<User>;
 
-  private $user: Subject<User> = new ReplaySubject();
+  private $user: ReplaySubject<User> = new ReplaySubject();
 
   constructor(private fireauth: AngularFireAuth) {
     this.user$ = this.$user.asObservable();
@@ -23,6 +23,9 @@ export class SessionService {
       }
       this.removeCurrentUser();
     });
+  }
+
+  getCurrentUser() {
   }
 
   private setCurrentUser(user: User): void {
