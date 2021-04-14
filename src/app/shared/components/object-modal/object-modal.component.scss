@@ -1,0 +1,32 @@
+.content {
+  width: 448px;
+}
+
+
+.top-content__title, .top-content__notes {
+
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+.bottom-content__delete-btn {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+
+  button .button-text {
+    text-align: center;
+    display: flex;
+    align-items: center;
+  }
+
+  button .button-text mat-icon {
+    margin-right: 0.25rem;
+  }
+
+  button .button-text span {
+    margin-top: 0.33rem;
+  }
+}

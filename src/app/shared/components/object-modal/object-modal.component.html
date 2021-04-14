@@ -1,1 +1,40 @@
-<p>object-modal works!</p>
+<div class="content">
+  <div class="top-content">
+    <div class="top-content__header flex justify-between">
+      <h3>Edit To Do</h3>
+
+      <div class="buttons">
+        <button mat-button>Cancel</button>
+        <button mat-stroked-button>Save</button>
+      </div>
+    </div>
+
+    <div class="top-content__title">
+      <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input matInput placeholder="Add a title" value="">
+      </mat-form-field>
+    </div>
+    <div class="top-content__notes">
+      <mat-form-field>
+        <mat-label>Notes</mat-label>
+        <textarea matInput placeholder="Add notes" rows="4"></textarea>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="bottom-content">
+    <div class="bottom-content__delete-btn">
+      <button mat-button color="warn">
+        <div class="button-text">
+          <mat-icon>delete</mat-icon>
+          <span>Delete this todo</span>
+        </div>
+
+      </button>
+    </div>
+
+  </div>
+
+</div>
+

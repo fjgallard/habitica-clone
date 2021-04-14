@@ -30,7 +30,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  openDialog(task: Task) {
+  openDialog(task: Task): void {
     console.log(task);
     const dialogRef = this.dialog.open(ObjectModalComponent);
 

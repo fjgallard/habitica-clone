@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ObjectModalComponent } from './object-modal/object-modal.component';
 
 import { MatDialogModule } from '@angular/material/dialog';
+import { MaterialModule } from 'src/app/material/material.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,9 @@ import { MatDialogModule } from '@angular/material/dialog';
   ],
   imports: [
     CommonModule,
-    MatDialogModule
+    MatDialogModule,
+
+    MaterialModule
   ],
   exports: [
     ObjectModalComponent
