@@ -15,10 +15,15 @@ export class TasksService {
 
   user: User;
   tasks$: Observable<Task[]>;
+  openTasks$: Observable<Task[]>;
 
   constructor(private firestore: AngularFirestore, private sessionService: SessionService) {
     this.tasks$ = this.sessionService.user$.pipe(
       switchMap(user => this.initTasks(user))
+    );
+
+    this.openTasks$ = this.sessionService.user$.pipe(
+      switchMap(user => this.initOpenTasks(user))
     );
   }
 
@@ -58,5 +63,17 @@ export class TasksService {
     this.user = user;
 
     return this.firestore.collection<Task>('tasks', ref => ref.where('user', '==', user.id)).valueChanges({ idField: 'id' });
+  }
+
+  private initOpenTasks(user: User): Observable<Task[]> {
+    if (!user) {
+      return from([]);
+    }
+    this.user = user;
+
+    return this.firestore.collection<Task>('tasks', ref => ref
+      .where('user', '==', user.id)
+      .where('done', '==', false))
+    .valueChanges({ idField: 'id' });
   }
 }

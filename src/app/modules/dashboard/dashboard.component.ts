@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
 
     public dialog: MatDialog
   ) {
-    this.tasks$ = this.tasksService.tasks$;
+    this.tasks$ = this.tasksService.openTasks$;
   }
 
   ngOnInit(): void {
@@ -32,10 +32,10 @@ export class DashboardComponent implements OnInit {
 
   async createTask(event: any): Promise<void> {
     const title = event.target.value;
-    event.target.value = '';
 
     if (event.key === 'Enter') {
       const task = { title, done: false };
+      event.target.value = '';
       await this.tasksService.createTask(task);
     }
   }
