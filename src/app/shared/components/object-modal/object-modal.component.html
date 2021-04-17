@@ -24,6 +24,12 @@
   </div>
 
   <div class="bottom-content">
+    <div class="bottom-content__cost" *ngIf="objectType === 'reward'">
+      <mat-form-field>
+        <mat-label>Cost</mat-label>
+        <input matInput placeholder="Enter a Value" [value]="cost" #title>
+      </mat-form-field>
+    </div>
     <div class="bottom-content__delete-btn">
       <button mat-button color="warn">
         <div class="button-text" (click)="delete()">
