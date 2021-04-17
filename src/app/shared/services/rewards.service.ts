@@ -32,6 +32,10 @@ export class RewardsService {
     return this.firestore.collection<Reward>('rewards').add(reward);
   }
 
+  deleteReward(rewardId: string): Promise<void> {
+    return this.firestore.doc<Reward>(`rewards/${rewardId}`).delete();
+  }
+
   private initRewards(user: User): Observable<Reward[]> {
     if (!user) {
       return from([]);

@@ -92,7 +92,7 @@ export class DashboardComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result?.event === 'delete') {
-        // this.tasksService.deleteTask(reward.id);
+        this.rewardService.deleteReward(reward.id);
       } else if (result?.event === 'save') {
         // this.tasksService.updateTask(result.task)
       }
