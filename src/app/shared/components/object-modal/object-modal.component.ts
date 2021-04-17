@@ -17,8 +17,11 @@ interface Object {
 })
 export class ObjectModalComponent implements OnInit {
 
-  @ViewChild('title')
-  titleInput: ElementRef;
+  @ViewChild('nameInput')
+  nameInput: ElementRef;
+
+  @ViewChild('costInput')
+  costInput: ElementRef;
 
   @Output()
   deleteTask = new EventEmitter<boolean>();
@@ -37,7 +40,9 @@ export class ObjectModalComponent implements OnInit {
   }
 
   save() {
-    this.object.name = this.titleInput.nativeElement.value;
+    this.object.name = this.nameInput.nativeElement.value;
+    this.object.cost = this.costInput.nativeElement.value;
+
     this.dialogRef.close({ event: 'save', object: this.object });
   }
 
@@ -52,6 +57,10 @@ export class ObjectModalComponent implements OnInit {
 
   get deleteText() {
     return this.data.type === 'task' ? 'Delete this todo' : 'Delete this reward';
+  }
+
+  get name() {
+    return this.object.name || '';
   }
 
   get cost() {

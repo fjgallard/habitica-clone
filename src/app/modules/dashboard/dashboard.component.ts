@@ -94,7 +94,7 @@ export class DashboardComponent implements OnInit {
       if (result?.event === 'delete') {
         this.rewardService.deleteReward(reward.id);
       } else if (result?.event === 'save') {
-        // this.tasksService.updateTask(result.task)
+        this.rewardService.updateReward(result.object);
       }
     });
   }

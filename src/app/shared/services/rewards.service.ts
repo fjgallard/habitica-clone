@@ -32,6 +32,12 @@ export class RewardsService {
     return this.firestore.collection<Reward>('rewards').add(reward);
   }
 
+  updateReward(reward: Reward): Promise<void> {
+    return this.firestore.doc<Reward>(`rewards/${reward.id}`).update({
+      ...reward
+    });
+  }
+
   deleteReward(rewardId: string): Promise<void> {
     return this.firestore.doc<Reward>(`rewards/${rewardId}`).delete();
   }
