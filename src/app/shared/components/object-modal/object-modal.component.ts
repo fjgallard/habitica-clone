@@ -1,6 +1,7 @@
-import { Component, Inject, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Inject, OnInit, Output, EventEmitter, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ObjectModalData } from '@shared/lib/object-modal.data';
+import { Task } from '@shared/models/task.model';
 
 @Component({
   selector: 'app-object-modal',
@@ -9,10 +10,13 @@ import { ObjectModalData } from '@shared/lib/object-modal.data';
 })
 export class ObjectModalComponent implements OnInit {
 
+  @ViewChild('title')
+  titleInput: ElementRef;
+
   @Output()
   deleteTask = new EventEmitter<boolean>();
 
-  title: string;
+  task: Task;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: ObjectModalData,
@@ -22,7 +26,12 @@ export class ObjectModalComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.title = this.data.object.title || '';
+    this.task = this.data.object;
+  }
+
+  save() {
+    this.task.title = this.titleInput.nativeElement.value;
+    this.dialogRef.close({ event: 'save', task: this.task });
   }
 
   delete() {

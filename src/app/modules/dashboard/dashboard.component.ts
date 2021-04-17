@@ -30,8 +30,22 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  async createTask(event: any): Promise<void> {
+    const title = event.target.value;
+    event.target.value = '';
+
+    if (event.key === 'Enter') {
+      const task = { title, done: false };
+      await this.tasksService.createTask(task);
+    }
+  }
+
   clearTask(task: Task) {
     this.tasksService.clearTask(task.id);
+  }
+
+  updateTask(task: Task) {
+    this.tasksService.updateTask(task);
   }
 
   openDialog(task: Task): void {
@@ -45,6 +59,8 @@ export class DashboardComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result?.event === 'delete') {
         this.tasksService.deleteTask(task.id);
+      } else if (result?.event === 'save') {
+        this.tasksService.updateTask(result.task)
       }
     });
   }
@@ -52,20 +68,6 @@ export class DashboardComponent implements OnInit {
   async logout(): Promise<void> {
     await this.authService.logout();
     this.router.navigateByUrl('/login');
-  }
-
-  async createTask(event: any): Promise<void> {
-    const title = event.target.value;
-
-    if (event.key === 'Enter') {
-      const task = {
-        title,
-        done: false,
-      };
-
-      await this.tasksService.createTask(task);
-      event.target.value = '';
-    }
   }
 
 }

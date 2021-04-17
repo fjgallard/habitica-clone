@@ -5,14 +5,14 @@
 
       <div class="buttons">
         <button mat-button mat-dialog-close>Cancel</button>
-        <button mat-stroked-button>Save</button>
+        <button mat-stroked-button (click)="save()">Save</button>
       </div>
     </div>
 
     <div class="top-content__title">
       <mat-form-field>
         <mat-label>Title</mat-label>
-        <input matInput placeholder="Add a title" [value]="title">
+        <input matInput placeholder="Add a title" [value]="task.title" #title>
       </mat-form-field>
     </div>
     <div class="top-content__notes">
