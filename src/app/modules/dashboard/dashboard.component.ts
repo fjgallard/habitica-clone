@@ -30,6 +30,10 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  clearTask(task: Task) {
+    this.tasksService.clearTask(task.id);
+  }
+
   openDialog(task: Task): void {
     const dialogRef = this.dialog.open(ObjectModalComponent, {
       data: {
