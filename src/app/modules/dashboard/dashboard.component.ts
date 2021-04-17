@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ObjectModalComponent } from '@shared/components/object-modal/object-modal.component';
+import { Reward } from '@shared/models/reward.model';
 import { Task } from '@shared/models/task.model';
 import { AuthService } from '@shared/services/auth.service';
 import { TasksService } from '@shared/services/tasks.service';
@@ -15,6 +16,7 @@ import { Observable } from 'rxjs';
 export class DashboardComponent implements OnInit {
 
   tasks$: Observable<Task[]>;
+  rewards$: Observable<Reward[]>
 
   constructor(
     private router: Router,
