@@ -1,5 +1,5 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, Inject, OnInit, Output, EventEmitter } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ObjectModalData } from '@shared/lib/object-modal.data';
 
 @Component({
@@ -9,14 +9,23 @@ import { ObjectModalData } from '@shared/lib/object-modal.data';
 })
 export class ObjectModalComponent implements OnInit {
 
+  @Output()
+  deleteTask = new EventEmitter<boolean>();
+
   title: string;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: ObjectModalData) {
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: ObjectModalData,
+    public dialogRef: MatDialogRef<ObjectModalComponent>
+  ) {
+
   }
 
   ngOnInit(): void {
     this.title = this.data.object.title || '';
-    console.log(this.data.object.title);
   }
 
+  delete() {
+    this.dialogRef.close({ event: 'delete' });
+  }
 }

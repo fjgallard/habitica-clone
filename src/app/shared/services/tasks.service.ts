@@ -32,6 +32,12 @@ export class TasksService {
   }
 
   clearTask(taskId: string): Promise<void> {
+    return this.firestore.doc<Task>(`tasks/${taskId}`).update({
+      done: true
+    });
+  }
+
+  deleteTask(taskId: string): Promise<void> {
     return this.firestore.doc<Task>(`tasks/${taskId}`).delete();
   }
 
