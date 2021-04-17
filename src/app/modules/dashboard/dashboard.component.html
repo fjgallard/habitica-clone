@@ -27,18 +27,18 @@
       <h3>Rewards</h3>
 
       <div class="new-item-input">
-        <input type="text" placeholder="New Task" (keypress)="createTask($event)">
+        <input type="text" placeholder="Add a Reward" (keypress)="createReward($event)">
       </div>
 
       <div class="list">
-        <mat-card class="list-item" *ngFor="let task of tasks$ | async">
+        <mat-card class="list-item" *ngFor="let reward of rewards$ | async">
           <div class="flex full-height">
             <div class="list-item__desc list-item__desc--reward">
-              <div class="list-item__text">Item 2</div>
+              <div class="list-item__text">{{ reward.name }}</div>
             </div>
             <div class="list-item__cost">
               <mat-icon>monetization_on</mat-icon>
-              <div class="list-item__coin-text">5</div>
+              <div class="list-item__coin-text">{{ reward.cost }}</div>
             </div>
           </div>
         </mat-card>

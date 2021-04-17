@@ -5,6 +5,7 @@ import { ObjectModalComponent } from '@shared/components/object-modal/object-mod
 import { Reward } from '@shared/models/reward.model';
 import { Task } from '@shared/models/task.model';
 import { AuthService } from '@shared/services/auth.service';
+import { RewardsService } from '@shared/services/rewards.service';
 import { TasksService } from '@shared/services/tasks.service';
 import { Observable } from 'rxjs';
 
@@ -23,15 +24,18 @@ export class DashboardComponent implements OnInit {
 
     private authService: AuthService,
     private tasksService: TasksService,
+    private rewardService: RewardsService,
 
     public dialog: MatDialog
   ) {
     this.tasks$ = this.tasksService.openTasks$;
+    this.rewards$ = this.rewardService.rewards$;
   }
 
   ngOnInit(): void {
   }
 
+  // Task Functions
   async createTask(event: any): Promise<void> {
     const title = event.target.value;
 
@@ -66,6 +70,18 @@ export class DashboardComponent implements OnInit {
       }
     });
   }
+
+  // Reward Functions
+  async createReward(event: any): Promise<void> {
+    const name = event.target.value;
+
+    if (event.key === 'Enter') {
+      const reward = { name };
+      event.target.value = '';
+      await this.rewardService.createReward(reward);
+    }
+  }
+
 
   async logout(): Promise<void> {
     await this.authService.logout();

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Task } from '@shared/models/task.model';
-import { BehaviorSubject, from, Observable } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import { SessionService } from './session.service';
 
-import { switchMap, tap } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 import { User } from '@shared/models/user.model';
 import { CreateTaskData } from '@shared/lib/create-task.data';
 
@@ -50,10 +50,6 @@ export class TasksService {
 
   deleteTask(taskId: string): Promise<void> {
     return this.firestore.doc<Task>(`tasks/${taskId}`).delete();
-  }
-
-  private setUser(user: User): void {
-    this.user = user;
   }
 
   private initTasks(user: User): Observable<Task[]> {
