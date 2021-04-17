@@ -16,7 +16,7 @@
               <div class="list-item__checkbox" (click)="clearTask(task)"></div>
             </div>
             <div class="list-item__desc list-item__desc--task" (click)="openDialog(task)">
-              <div class="list-item__text">{{ task.title }}</div>
+              <div class="list-item__text">{{ task.name }}</div>
             </div>
           </div>
         </mat-card>
@@ -33,7 +33,7 @@
       <div class="list">
         <mat-card class="list-item" *ngFor="let reward of rewards$ | async">
           <div class="flex full-height">
-            <div class="list-item__desc list-item__desc--reward">
+            <div class="list-item__desc list-item__desc--reward" (click)="openRewardDialog(reward)">
               <div class="list-item__text">{{ reward.name }}</div>
             </div>
             <div class="list-item__cost">

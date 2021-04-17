@@ -37,10 +37,10 @@ export class DashboardComponent implements OnInit {
 
   // Task Functions
   async createTask(event: any): Promise<void> {
-    const title = event.target.value;
+    const name = event.target.value;
 
     if (event.key === 'Enter') {
-      const task = { title, done: false };
+      const task = { name, done: false };
       event.target.value = '';
       await this.tasksService.createTask(task);
     }
@@ -66,7 +66,7 @@ export class DashboardComponent implements OnInit {
       if (result?.event === 'delete') {
         this.tasksService.deleteTask(task.id);
       } else if (result?.event === 'save') {
-        this.tasksService.updateTask(result.task)
+        this.tasksService.updateTask(result.object)
       }
     });
   }
@@ -80,6 +80,23 @@ export class DashboardComponent implements OnInit {
       event.target.value = '';
       await this.rewardService.createReward(reward);
     }
+  }
+
+  openRewardDialog(reward: Reward): void {
+    const dialogRef = this.dialog.open(ObjectModalComponent, {
+      data: {
+        object: reward,
+        type: 'reward'
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result?.event === 'delete') {
+        // this.tasksService.deleteTask(reward.id);
+      } else if (result?.event === 'save') {
+        // this.tasksService.updateTask(result.task)
+      }
+    });
   }
 
 

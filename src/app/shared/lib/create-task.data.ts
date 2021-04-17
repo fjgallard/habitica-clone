@@ -1,4 +1,4 @@
 export interface CreateTaskData {
-  title: string;
+  name: string;
   done: boolean;
 }

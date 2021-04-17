@@ -1,7 +1,7 @@
 <div class="content">
   <div class="top-content">
     <div class="top-content__header flex justify-between">
-      <h3>Edit To Do</h3>
+      <h3>{{ headerText }}</h3>
 
       <div class="buttons">
         <button mat-button mat-dialog-close>Cancel</button>
@@ -12,7 +12,7 @@
     <div class="top-content__title">
       <mat-form-field>
         <mat-label>Title</mat-label>
-        <input matInput placeholder="Add a title" [value]="task.title" #title>
+        <input matInput placeholder="Add a title" [value]="object.name" #title>
       </mat-form-field>
     </div>
     <div class="top-content__notes">
@@ -28,7 +28,7 @@
       <button mat-button color="warn">
         <div class="button-text" (click)="delete()">
           <mat-icon>delete</mat-icon>
-          <span>Delete this todo</span>
+          <span>{{ deleteText }}</span>
         </div>
 
       </button>

@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit, Output, EventEmitter, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ObjectModalData } from '@shared/lib/object-modal.data';
+import { Reward } from '@shared/models/reward.model';
 import { Task } from '@shared/models/task.model';
 
 @Component({
@@ -16,7 +17,7 @@ export class ObjectModalComponent implements OnInit {
   @Output()
   deleteTask = new EventEmitter<boolean>();
 
-  task: Task;
+  object: Task | Reward;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: ObjectModalData,
@@ -26,15 +27,24 @@ export class ObjectModalComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.task = this.data.object;
+    this.object = this.data.object;
   }
 
   save() {
-    this.task.title = this.titleInput.nativeElement.value;
-    this.dialogRef.close({ event: 'save', task: this.task });
+    this.object.name = this.titleInput.nativeElement.value;
+    this.dialogRef.close({ event: 'save', object: this.object });
   }
 
   delete() {
     this.dialogRef.close({ event: 'delete' });
+  }
+
+
+  get headerText() {
+    return this.data.type === 'task' ? 'Edit To Do' : 'Edit Reward';
+  }
+
+  get deleteText() {
+    return this.data.type === 'task' ? 'Delete this todo' : 'Delete this reward';
   }
 }
