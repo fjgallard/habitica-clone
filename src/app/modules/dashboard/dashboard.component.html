@@ -36,7 +36,7 @@
             <div class="list-item__desc list-item__desc--reward" (click)="openRewardDialog(reward)">
               <div class="list-item__text">{{ reward.name }}</div>
             </div>
-            <div class="list-item__cost">
+            <div class="list-item__cost" (click)="purchaseReward(user, reward)">
               <mat-icon>monetization_on</mat-icon>
               <div class="list-item__coin-text">{{ reward.cost }}</div>
             </div>

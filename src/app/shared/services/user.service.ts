@@ -17,4 +17,9 @@ export class UserService {
       switchMap(user => this.firestore.doc<User>(`users/${user.id}`).valueChanges({idField: 'id'}))
     );
   }
+
+  updateGold(cost: number, currentGold: number, userId: string) {
+    const gold = currentGold - cost;
+    return this.firestore.doc<User>(`users/${userId}`).update({ gold });
+  }
 }

@@ -7,7 +7,6 @@ import { Task } from '@shared/models/task.model';
 import { User } from '@shared/models/user.model';
 import { AuthService } from '@shared/services/auth.service';
 import { RewardsService } from '@shared/services/rewards.service';
-import { SessionService } from '@shared/services/session.service';
 import { TasksService } from '@shared/services/tasks.service';
 import { UserService } from '@shared/services/user.service';
 import { Observable } from 'rxjs';
@@ -103,6 +102,10 @@ export class DashboardComponent implements OnInit {
         this.rewardService.updateReward(result.object);
       }
     });
+  }
+
+  purchaseReward(user: User, reward: Reward) {
+    return this.userService.updateGold(reward.cost, user.gold, user.id);
   }
 
 
