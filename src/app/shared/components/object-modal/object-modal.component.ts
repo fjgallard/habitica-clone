@@ -41,7 +41,10 @@ export class ObjectModalComponent implements OnInit {
 
   save() {
     this.object.name = this.nameInput.nativeElement.value;
-    this.object.cost = this.costInput.nativeElement.value;
+
+    if (this.data.type === 'reward') {
+      this.object.cost = this.costInput?.nativeElement.value || 0;
+    }
 
     this.dialogRef.close({ event: 'save', object: this.object });
   }
