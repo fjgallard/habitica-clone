@@ -13,7 +13,7 @@
         <mat-card class="list-item" *ngFor="let task of tasks$ | async">
           <div class="flex full-height">
             <div class="list-item__checkbox-area">
-              <div class="list-item__checkbox" (click)="clearTask(task)"></div>
+              <div class="list-item__checkbox" (click)="clearTask(task, user)"></div>
             </div>
             <div class="list-item__desc list-item__desc--task" (click)="openDialog(task)">
               <div class="list-item__text">{{ task.name }}</div>

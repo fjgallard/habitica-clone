@@ -51,8 +51,11 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  clearTask(task: Task) {
-    this.tasksService.clearTask(task.id);
+  async clearTask(task: Task, user: User) {
+    await this.tasksService.clearTask(task.id);
+    const taskGold = 5; // adjust this soon based on difficulty
+
+    return this.userService.grantGold(taskGold, user.gold, user.id);
   }
 
   updateTask(task: Task) {
@@ -105,7 +108,7 @@ export class DashboardComponent implements OnInit {
   }
 
   purchaseReward(user: User, reward: Reward) {
-    return this.userService.updateGold(reward.cost, user.gold, user.id);
+    return this.userService.deductGold(reward.cost, user.gold, user.id);
   }
 
 

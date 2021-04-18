@@ -18,8 +18,13 @@ export class UserService {
     );
   }
 
-  updateGold(cost: number, currentGold: number, userId: string) {
+  deductGold(cost: number, currentGold: number, userId: string) {
     const gold = currentGold - cost;
+    return this.firestore.doc<User>(`users/${userId}`).update({ gold });
+  }
+
+  grantGold(goldReward: number, currentGold: number, userId: string) {
+    const gold = currentGold + goldReward;
     return this.firestore.doc<User>(`users/${userId}`).update({ gold });
   }
 }
