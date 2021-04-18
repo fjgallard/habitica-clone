@@ -4,9 +4,12 @@ import { Router } from '@angular/router';
 import { ObjectModalComponent } from '@shared/components/object-modal/object-modal.component';
 import { Reward } from '@shared/models/reward.model';
 import { Task } from '@shared/models/task.model';
+import { User } from '@shared/models/user.model';
 import { AuthService } from '@shared/services/auth.service';
 import { RewardsService } from '@shared/services/rewards.service';
+import { SessionService } from '@shared/services/session.service';
 import { TasksService } from '@shared/services/tasks.service';
+import { UserService } from '@shared/services/user.service';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -18,11 +21,13 @@ export class DashboardComponent implements OnInit {
 
   tasks$: Observable<Task[]>;
   rewards$: Observable<Reward[]>
+  user$: Observable<User>;
 
   constructor(
     private router: Router,
 
     private authService: AuthService,
+    private userService: UserService,
     private tasksService: TasksService,
     private rewardService: RewardsService,
 
@@ -30,6 +35,7 @@ export class DashboardComponent implements OnInit {
   ) {
     this.tasks$ = this.tasksService.openTasks$;
     this.rewards$ = this.rewardService.rewards$;
+    this.user$ = this.userService.user$;
   }
 
   ngOnInit(): void {

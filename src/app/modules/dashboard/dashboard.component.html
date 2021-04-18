@@ -1,5 +1,5 @@
-<div class="container">
-  <app-navbar (logout)="logout()"></app-navbar>
+<div class="container" *ngIf="user$ | async as user">
+  <app-navbar [user]="user" (logout)="logout()"></app-navbar>
 
   <div class="flex full-width">
     <div class="list-container">
