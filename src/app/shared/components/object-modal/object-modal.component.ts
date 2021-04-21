@@ -8,6 +8,7 @@ interface Object {
   user: string;
   done?: boolean;
   cost?: number;
+  notes?: string;
 }
 
 @Component({
@@ -19,6 +20,9 @@ export class ObjectModalComponent implements OnInit {
 
   @ViewChild('nameInput')
   nameInput: ElementRef;
+
+  @ViewChild('notesInput')
+  notesInput: ElementRef;
 
   @ViewChild('costInput')
   costInput: ElementRef;
@@ -41,6 +45,7 @@ export class ObjectModalComponent implements OnInit {
 
   save() {
     this.object.name = this.nameInput.nativeElement.value;
+    this.object.notes = this.notesInput.nativeElement.value;
 
     if (this.data.type === 'reward') {
       this.object.cost = this.costInput?.nativeElement.value || 0;
@@ -64,6 +69,10 @@ export class ObjectModalComponent implements OnInit {
 
   get name() {
     return this.object.name || '';
+  }
+
+  get notes() {
+    return this.object.notes || '';
   }
 
   get cost() {

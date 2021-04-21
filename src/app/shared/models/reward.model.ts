@@ -3,4 +3,5 @@ export interface Reward {
   name: string;
   cost: number;
   user: string;
+  notes?: string;
 }

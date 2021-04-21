@@ -3,4 +3,5 @@ export interface Task {
   name: string;
   done: boolean;
   user: string;
+  notes?: string;
 }
