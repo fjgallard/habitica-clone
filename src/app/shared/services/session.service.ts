@@ -18,6 +18,7 @@ export class SessionService {
     this.user$ = this.$user.asObservable();
 
     this.fireauth.onAuthStateChanged(user => {
+      console.log(user);
       if (user) {
         return this.setCurrentUser(AuthHelper.convertFsUser(user));
       }
