@@ -1,5 +1,33 @@
-.example-spacer {
-  flex: 1 1 auto;
+mat-toolbar {
+  background: var(--primary-color);
+  color: white;
+}
+
+.toolbar-content {
+  width: 100%;
+}
+
+.user-info {
+  align-items: center;
+  min-width: 20vw;
+}
+
+.coins {
+  margin: 0 1rem;
+}
+
+.user-identity {
+  display: flex;
+  align-items: center;
+}
+
+.user-identity__photo {
+  border-radius: 100%;
+  width: 2rem;
+}
+
+.user-identity__name {
+  margin-left: 0.25rem;
 }
 
 .coins__icon {

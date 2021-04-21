@@ -1,21 +1,28 @@
-<mat-toolbar color="dark">
-  <span>My App</span>
+<mat-toolbar>
+  <div class="toolbar-content flex justify-between align-center">
+    <span>My App</span>
 
-  <span class="example-spacer"></span>
+    <div class="user-info flex">
+      <div class="coins flex align-center">
+        <mat-icon class="coins__icon">monetization_on</mat-icon>
+        <span class="coins__text">{{ gold }}</span>
+      </div>
 
-  <div class="coins flex align-center">
-    <mat-icon class="coins__icon">monetization_on</mat-icon>
-    <span class="coins__text">{{ gold }}</span>
+      <button mat-icon-button class="example-icon" [matMenuTriggerFor]="menu">
+
+        <div class="user-identity">
+          <img class="user-identity__photo" [src]="user.photoURL" alt="user image">
+          <div class="user-identity__name">{{ user.name }}</div>
+        </div>
+
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="emitLogout()">
+            <mat-icon>logout</mat-icon>
+            <span>Logout</span>
+          </button>
+        </mat-menu>
+      </button>
+    </div>
   </div>
 
-  <button mat-icon-button class="example-icon" [matMenuTriggerFor]="menu">
-    <mat-icon>person_outline</mat-icon>
-
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item (click)="emitLogout()">
-        <mat-icon>logout</mat-icon>
-        <span>Logout</span>
-      </button>
-    </mat-menu>
-  </button>
 </mat-toolbar>

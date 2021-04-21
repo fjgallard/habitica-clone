@@ -1,7 +1,7 @@
 <div class="container" *ngIf="user$ | async as user">
   <app-navbar [user]="user" (logout)="logout()"></app-navbar>
 
-  <div class="flex full-width">
+  <div class="content flex full-width">
     <div class="list-container">
       <h3>Todo</h3>
 
